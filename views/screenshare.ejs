@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Educo</title>
+    
+    <% include ./partials/header.ejs %>
+
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+<% include ./partials/navbar.ejs %>
+
+<div class="container">
+    <video autoplay></video><br/>
+</div>
+
+<div class="container" id="main">
+    <div class="col-12 text-center">
+        <img src="/class.png" class="image-fluid" style="width: 600px; height: auto;" alt="Live Class">
+        <% if(user && !user.isStudent) { %>
+            <div>
+                <button id="initiateBtn" style="padding: 15px 25px; background-color: #021116; border-color: #021116; font-size: 30px; border-radius: 10px;" class="btn btn-primary btn-lg mt-5">
+                    Start Sharing
+                </button>
+                <button id="stopBtn" style="display: none; padding: 15px 25px; background-color: #021116; border-color: #021116; font-size: 30px; border-radius: 10px;" class="btn btn-primary btn-lg mt-5">
+                    Stop Sharing
+                </button>
+            </div>
+        <% } else { %>
+            <div>
+                <button style="padding: 15px 25px; background-color: #021116; border-color: #021116; font-size: 30px; border-radius: 10px;" class="btn btn-primary btn-lg mt-5">
+                    Live Class not started yet!
+                </button>
+            </div>
+            <div class="hidden">
+                <button id="initiateBtn" style="padding: 15px 25px; background-color: #021116; border-color: #021116; font-size: 30px; border-radius: 10px;" class="btn btn-primary btn-lg mt-5">
+                    Start Sharing
+                </button>
+                <button id="stopBtn" style="display: none; padding: 15px 25px; background-color: #021116; border-color: #021116; font-size: 30px; border-radius: 10px;" class="btn btn-primary btn-lg mt-5">
+                    Stop Sharing
+                </button>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+<input type="hidden" name="classId" id="classId" value="<%= screen._id %>">
+<input type="hidden" name="sender" id="sender" value="<%= user.name %>">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simple-peer/9.1.2/simplepeer.min.js"></script>
+<script src="/js/screenshare/screen.js"></script>
+
+</body>
+</html>

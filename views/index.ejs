@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Educo</title>
+    
+    <% include ./partials/header.ejs %>
+
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/js/index.js"></script>
+
+</head>
+<body>
+    <% include ./partials/navbar.ejs %>
+
+    <div id="landing-section">
+        <div class="container">
+            <div class="col-12 text-center">    
+                <h2 id="landing-heading" class="text-uppercase">EDUCO</h2>
+                <h3 id="landing-subheading">Complete Student Platform</h3>
+                <a href="#features" id="landing-btn" class="btn btn-primary btn-lg mt-5">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <section id="features" class="py-3">
+        <div class="container">
+            <div class="row my-3 pt-5 pb-2">
+                <div class="col-12 text-center">
+                    <h1 id="features-heading">Features</h1>
+                </div>
+            </div>
+            <div class="row mb-2 pb-2">
+                <a href="/resources" class="col-4 text-center">
+                    <div class="features-icon fa-stack fa-4x">
+                        <i class="fa fa-search text-primary"></i>
+                    </div>
+                    <h4 class="feature-heading p-2">Manage Resources Easily</h4>
+                </a>
+                <a href="/tests" class="col-4 text-center">
+                    <div class="features-icon fa-stack fa-4x">
+                        <i class="fa fa-plus text-primary"></i>
+                    </div>
+                    <h4 class="feature-heading p-2">
+                        <% if(user && user.isStudent) { %>
+                            Give Online Tests
+                        <% } else { %>
+                            Create Online Tests 
+                        <% } %>
+                    </h4>
+                </a>
+                <a href="/screens" class="col-4 text-center">
+                    <div class="features-icon fa-stack fa-4x">
+                        <i class="fa fa-plus text-primary"></i>
+                    </div>
+                    <h4 class="feature-heading p-2">
+                        <% if(user && user.isStudent) { %>
+                            Attend Online Classes
+                        <% } else { %>
+                            Host Online Classes 
+                        <% } %>
+                    </h4>
+                </a>
+            </div>
+            <div class="row mb-2 pb-2">
+                <a href="/home" class="col-4 text-center">
+                    <div class="features-icon fa-stack fa-4x">
+                        <i class="fa fa-users text-primary"></i>
+                    </div>
+                    <h4 class="feature-heading p-2">Groups Section</h4>
+                </a>
+                <a href="/profile" class="col-4 text-center">
+                    <div class="features-icon fa-stack fa-4x">
+                        <i class="fa fa-user text-primary"></i>
+                    </div>
+                    <h4 class="feature-heading p-2">Keep Track under Profile Section</h4>
+                </a>
+                <% if(user && !user.isStudent) { %>
+                    <a href="/attendance" class="col-4 text-center">
+                        <div class="features-icon fa-stack fa-4x">
+                            <i class="fa fa-calendar-check-o text-primary"></i>
+                        </div>
+                        <h4 class="feature-heading p-2">Take Attendance</h4>
+                    </a>
+                <% } %>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

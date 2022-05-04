@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile <%= user.name %> </title>
+
+    <% include ./partials/header.ejs %>
+
+    <link rel="stylesheet" href="/css/profile.css">
+
+</head>
+<body>
+
+<% include ./partials/navbar.ejs %>
+
+<div class="container">
+    <div>
+        <h1 id="heading" class="text-center my-3">
+            <%= user.name %>
+            <% if(!user.isStudent) { %> 
+                <span class="pull-right">
+                    <button class="btn btn-lg btn-primary"> <%= user.attendance %> </button>
+                </span>
+            <% } %>
+        </h1>
+    </div>
+
+    <hr class="style14 mb-2">
+
+    <div class="row">
+        <div class="col-lg-6">
+            <h1>Profile: </h1>
+            <hr class="style14">
+            <div class="card event-card mb-3">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="cover-img">
+                            <img src="/default_user.png" class="img-circle" alt="">
+                        </div>
+                        <div class="media-body">
+                            <h5 class="event-name"><%= user.name %></h5>
+                            <div class="event-description">
+                                <div class="datetime">
+                                    <i class="fa fa-book"></i> <%= user.email %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card event-card mb-3">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="event-name text-center"> Attendance </h5>
+                            <hr class="style14">
+                            <div class="event-description">
+                                <div class="datetime">
+                                    Total Classes Attended: 
+                                    <button class="btn btn-lg btn-danger ml-3">
+                                        <%= user.attendance %>
+                                    </button> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <h1>Test Results:</h1>
+            <hr class="style14">
+            
+                <div class="card event-card">
+                    <div class="card-body">
+                        <% user.testsGiven.forEach(test => { %>
+                        <div class="media">
+                            <div class="media-body">
+                                <span class="pull-right h5">
+                                    <i class="fa fa-book"></i> <%= test.testSubject %>
+                                    <i class="fa fa-arrow-right ml-4"></i> <b>Score: </b><%= test.score %> / <%= test.totalQuestions %>
+                                </span>
+                                <h5 class="event-name"><%= test.testName %></h5>
+                            </div>
+                        </div>
+                        <hr class="style14 my-1">
+                        <% }) %>
+                    </div>
+                </div> 
+            
+        </div>
+    </div>
+
+</div>
+    
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classes</title>
+
+    <% include ../partials/header.ejs %>
+
+    <link rel="stylesheet" href="/css/tests.css">
+
+</head>
+<body>
+
+<% include ../partials/navbar.ejs %>
+
+<div class="container">
+    <div>
+        <h1 id="heading" class="text-center my-3">
+            <%= test.name %>
+            <span class="pull-right">
+                <button class="btn btn-lg btn-primary"><%= test.subject %></button>
+            </span>
+        </h1>
+    </div>
+
+    <div class="mt-3">
+        <h5 class="pull-right"> <i class="fa fa-user"></i> Created By: <%= test.createdBy %> </h5>
+        <h5> <i class="fa fa-clock-o"></i> <b>Test ends at: </b><%=  test.endingTime.toLocaleString() %> </h5>
+    </div>
+
+    <hr class="style14 mb-2">
+
+    <h3> <b>Questions:</b></h3> 
+
+    <div id="testarea">
+        <% test.content.forEach( (ques, i) => { %>
+            <div id="questionNo<%=i%>">
+                <div class="card event-card mb-3">
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="media-body">
+                                <h5 class="event-name">
+                                    <button type="button" class="btn btn-info">Ques <%= i+1 %></button>
+                                    <%= ques.question %>
+                                </h5>
+                                <div class="event-description">
+                                    <% ques.options.forEach( (option, value) => { %>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="exampleRadios<%= i%>" id="exampleRadios<%= value+1 %>" value="<%= value+1 %>">
+                                                <%= option %>
+                                            </label>
+                                        </div>
+                                    <% }) %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        <% }) %>
+        <button class="btn btn-lg btn-danger" id="submitBtn">Submit Test</button>
+    </div>
+
+    <div id="result" class="col-lg-8 md-8 sm-10 main-div p-4" style=" margin: auto;">
+
+    </div>
+
+</div>
+
+<p class="hidden" id="totalQues"><%= test.content.length%></p>
+
+<% _.forEach(test.content, function (val,i) { %>
+    <p class="hidden" id="ans<%= i%>"><%= val.answer %></p>
+<% }) %>
+
+<p class="hidden" id="startingTime"><%= test.startingTime %></p>
+<p class="hidden" id="endingTime"><%= test.endingTime %></p>
+<p class="hidden" id="testName"> <%= test.name %> </p>
+<p class="hidden" id="testSubject"> <%= test.subject %> </p>
+<p class="hidden" id="userId"><%= user._id %> </p> 
+
+<script src="/js/test/result.js"></script>
+</body>
+</html>
+

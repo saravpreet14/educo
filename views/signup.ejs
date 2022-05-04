@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+    
+    <% include ./partials/header.ejs %>
+
+</head>
+<body>
+
+    <% include ./partials/navbar.ejs %>
+
+    <div class="container mt-4">
+        <% if(errors.length){ %>
+            <div class="alert alert-danger alert-dismissable fade show">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">
+                        &times; <!--  x button -->
+                    </span>
+                </button>
+                <%= errors%>
+            </div>
+        <% } %>
+
+        <h2>Signup</h2>
+        <form action="/signup" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control" name="name" placeholder="Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" name="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="phoneNo" placeholder="Phone Number" required>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" name="isStudent" value="true" checked>
+                Student
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Group</title>
+
+    <% include ../partials/header.ejs %>
+
+    <link rel="stylesheet" href="/css/group.css">
+
+</head>
+
+<body>
+
+<% include ../partials/navbar.ejs %>
+
+<div class="col-md-12">
+    <input type="hidden" id="name-user" value="<%= user.name %>">
+    <input type="hidden" id="name-image" value="<%= user.userImage %>">
+
+    <div class="col-md-12">
+        <div class="chat_container">
+            <div class="row">
+
+                <div class="col-sm-4 col-md-3 mob-clearfix">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="front">
+                                        <div class="cover">
+
+                                        </div>
+                                        <div class="cover-img">
+                                            <img src="/default_user.png" class="img-circle" alt="">
+                                        </div>
+                                        <div class="content">
+                                            <div class="main">
+                                                <h3 class="name"><%= _.upperFirst(user.name) %></h3>
+                                                <p class="profession-online">
+                                                    <i class="fa fa-circle online" aria-hidden="true"></i>
+                                                    Online
+                                                </p>
+                                                <p class="text-center">
+                                                    Mantra
+                                                </p>
+                                            </div>
+                                            <div class="footer">
+                                                <i class="fa fa-mail-forward"></i>
+                                                <a style="text-decoration:none; color:#4aa1f3" href="/profile">
+                                                    View My Profile
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="col-sm-5 col-md-6 message_section">
+                    <div class="row">
+                        <div class="new_message_head">
+                            <div class="pull-left">
+                                <button class="club_name">
+                                    <% var channelName; if(channel === 1) {channelName = "General Discussion"} if(channel === 2){channelName= "Important Updates"} if(channel === 3) {channelName = "Resources Section"} %>
+                                    <%= groupName %> - <%= channelName %>
+                                </button>
+                            </div>
+                            <div class="pull-right">
+                            </div>
+                        </div>
+
+                        <div class="chat_area">
+                            <ul id="messages" class="list-unstyled">
+                                <% _.forEach(groupMsg, function(val) { %>
+                                    <% if(groupName === val.name) {%>
+                                        <li class="left">
+                                            <span class="chat-img1 pull-left">
+                                                <img src="/default_user.png" class="img-circle" alt="">
+                                            </span>
+                                            <div class="chat-body1">
+                                                <span class="chat-name"><%= val.sender.name %></span>
+                                                <br>
+                                                <%= val.body %>
+                                            </div>
+                                        </li>
+                                    <% } %>
+                                <% }) %>
+
+                            </ul>
+
+                            <script id="message-template" type="text/template">
+                                <li class="left">
+                                       <span class="chat-img1 pull-left">
+                                           <img src="/default_user.png" class="img-circle" alt="">
+                                       </span>
+                                    <div class="chat-body1">
+                                        <span class="chat-name">{{ sender }}</span>
+                                        <br>
+                                        {{ text }}
+                                    </div>
+                                </li>
+                            </script>
+
+                        </div>
+
+                        <div class="message_write">
+                            <form id="message-form" method="post">
+                                <input type="hidden" name="groupName" id="groupName" value="<%= groupName %>">
+                                <input type="hidden" name="sender" id="sender" value="<%= user.name %>">
+                                <input type="hidden" name="channelForm" id="channelForm" value="<%= channel %>">
+
+                                <div class="row">
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" name="message" id="msg" placeholder="Type a message">
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <button id="send-message" class="btn btn-primary" style="background: #4aa1f3; border: #4aa1f3; ">
+                                            Send
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3 col-md-3 mob-50 mob-clearfix">
+
+
+                    <div class="new_message_head">
+                        <div class="pull-left">
+                            <button class="club_fans">
+                                <i class="fa fa-users" aria-hidden="true" style="padding-right:15px; color:#4aa1f3 !important;"></i>
+                                Online Students <span id="numValue"></span>
+                            </button>
+                        </div>
+                    </div>
+
+
+
+                    <div class="gr-rightsidebar">
+
+                        <div class="col-md-12"  id="main">
+                            <div id="users"></div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+</div>
+
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/group/groupchat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
+</body>
+
+</html>
+

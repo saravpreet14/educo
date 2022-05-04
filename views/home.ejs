@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--<link rel="shortcut icon" href="/uploads/favicon.ico" type="image/x-icon" />-->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<%- include ./partials/navbar.ejs %>
+
+
+
+<div class="col-md-12">
+    <input type="hidden" id="name-user" value="<%= user.username %>">
+    <input type="hidden" id="name-image" value="<%= user.userImage %>">
+    <div class="">
+        <div class="row">
+
+
+            <div class="col-lg-12">
+                <div>
+                    <% _.forEach(chunks, function(val) { %>
+                    <div class="category-list">
+                        <div class="row">
+                            <% _.forEach(val, function(val2) { %>
+                            <form action="/home" method="post" id="favorite">
+                                <div class="item row" style="margin-top: 10px; background: white;">
+
+                                        <div class="thumbnail">
+                                            <div class="col-lg-3">
+                                                <img src="https://invictus-hackeam.s3.amazonaws.com/<%= val2.image %>" alt="" height="200px" width="300px">
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="caption">
+                                                    <h1>
+                                                        <%= val2.name %>
+                                                    </h1>
+
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-md-6">
+                                                            <p>
+                                                                <%= val2.groupType %>
+                                                            </p>
+                                                        </div>
+
+                                                        <div class="col-xs-12 col-md-6">
+                                                            <input type="hidden" name="id" id="id" value="<%= val2._id %>">
+                                                            <input type="hidden" name="clubName" id="club_Name" value="<%= val2.name %>">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5" style="margin-top: 50px;">
+                                                <a href="/group/<%= val2.name.replace(/ /g, "-") %>/1" class="btn-lg btn-danger">General Discussion</a>
+                                                <a href="/group/<%= val2.name.replace(/ /g, "-") %>/2" class="btn-lg btn-danger">Imp Updates</a>
+                                                <a href="/group/<%= val2.name.replace(/ /g, "-") %>/3" class="btn-lg btn-danger">Resources</a>
+                                            </div>
+                                        </div>
+                                </div>
+                            </form>
+                            <% }) %>
+                        </div>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/home.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+
+    <% include ./partials/header.ejs %>
+
+    <link rel="stylesheet" href="/css/tests.css">
+    <style>
+        .event-img {
+            width: 10vh;
+        }
+    </style>
+
+</head>
+<body>
+
+        <% include ./partials/navbar.ejs %>
+
+        <div class="container">
+
+            <div>
+                <h1 id="heading" class="text-center my-3">
+                    Teachers
+                </h1>
+            </div>
+
+            <hr class="style14 mb-2">
+
+            <% users.forEach(user => { %>
+                <a href="/queries/<%= user._id %>">
+                    <div class="card event-card mb-3">
+                        <div class="card-body">
+                            <div class="media">
+                                <img class="d-flex mr-5 event-img" src="http://placehold.it/100x100" alt="">
+                                <div class="media-body">
+                                    <h5 class="event-name"><%= user.name %></h5>
+                                    <div class="event-description">
+                                        <div class="datetime" style="display: flex; justify-content: space-between;">
+                                            <span><i class="fa fa-user"></i> <%= user.email %></span>
+                                            <a href="/" ><button class="btn btn-primary">Join</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>  
+            <% }) %>
+        </div>
+
+    </body>
+</html>
+

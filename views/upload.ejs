@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Upload</title>
+    
+        <% include ./partials/header.ejs %>
+        <link rel="stylesheet" href="/css/tests.css">
+
+    </head>
+    <body>
+        <% include ./partials/navbar.ejs %>
+
+        <div class="container">
+
+            <div>
+                <h1 id="heading" class="text-center my-3">
+                    Upload File
+                </h1>
+            </div>
+
+            <hr class="style14 mb-2">
+
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <div class="input-group input-group-lg">                   
+                    <input type="text" class="form-control" name="name" placeholder="File Name">
+                </div>
+                <div class="form-group mt-2">
+                    <input type="file" class="form-control" accept=".pdf" name="pdf">
+                </div>
+                <button class="btn btn-primary">Upload</button>
+            </form>
+
+    </body>
+</html>

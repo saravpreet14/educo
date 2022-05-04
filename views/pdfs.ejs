@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resources</title>
+
+    <% include ./partials/header.ejs %>
+
+    <link rel="stylesheet" href="/css/tests.css">
+
+</head>
+<body>
+
+<% include ./partials/navbar.ejs %>
+
+<div class="container">
+    <div>
+        <h1 id="heading" class="text-center my-3">
+            All Resources
+            <% if(!user.isStudent) { %> 
+                <span class="pull-right">
+                    <a href="/upload">
+                        <button class="btn btn-lg btn-primary">Upload Pdf</button>
+                    </a>
+                </span>
+            <% } %>
+        </h1>
+    </div>
+    <hr class="style14 mb-2">
+
+    <% pdfs.forEach(pdf => { %>
+        <a href="<%= pdf.pdfUrl %>">
+            <div class="card event-card mb-3">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="event-name"><%= pdf.name %></h5>
+                            <div class="event-description">
+                                <div class="datetime">
+                                    <i class="fa fa-user"></i> Uploaded By: <%= pdf.uploadedBy %>
+                                    <span class="pull-right">
+                                        <i class="fa fa-clock-o"></i> <b>Time: </b><%= pdf.dateUploaded.toLocaleString() %> 
+                                    </span> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    <% }) %>
+
+</div>
+
+</body>
+</html>
+
+        

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classes</title>
+
+    <% include ./partials/header.ejs %>
+
+    <link rel="stylesheet" href="/css/resources.css">
+
+</head>
+<body>
+
+<% include ./partials/navbar.ejs %>
+
+<div class="container">
+    <div>
+        <h1 id="heading" class="text-center my-3">
+            Resources Section
+            <% if(!user.isStudent) { %> 
+                <span class="pull-right">
+                    <a href="/upload">
+                        <button class="btn btn-lg btn-primary">Upload Pdf</button>
+                    </a>
+                </span>
+            <% } %>
+        </h1>
+    </div>
+
+    <hr class="style14 mb-2">
+
+    <section id="features" class="py-3">
+        <div class="container">
+            <div class="row mb-2 pb-2">
+                <a href="/query" class="col-4 text-center">
+                    <div class="features-icon fa-stack fa-4x">
+                        <i class="fa fa-search text-primary"></i>
+                    </div>
+                    <h4 class="feature-heading p-2">Search Resources using Keywords</h4>
+                </a>
+                <a href="/pdfs" class="col-4 text-center">
+                    <div class="features-icon fa-stack fa-4x">
+                        <i class="fa fa-book text-primary"></i>
+                    </div>
+                    <h4 class="feature-heading p-2">
+                        View All Resources
+                    </h4>
+                </a>
+                <a href="/queries" class="col-4 text-center">
+                    <div class="features-icon fa-stack fa-4x">
+                        <i class="fa fa-address-book text-primary"></i>
+                    </div>
+                    <h4 class="feature-heading p-2">
+                        View All Search Results
+                    </h4>
+                </a>
+            </div>
+            <div class="row mb-2 pb-2">
+                <a href="/queries/<%= user._id %>" class="col-4 text-center">
+                    <div class="features-icon fa-stack fa-4x">
+                        <i class="fa fa-address-book text-primary"></i>
+                    </div>
+                    <h4 class="feature-heading p-2">View My Search Results</h4>
+                </a>
+                <a href="/users/1" class="col-4 text-center">
+                    <div class="features-icon fa-stack fa-4x">
+                        <i class="fa fa-users text-primary"></i>
+                    </div>
+                    <h4 class="feature-heading p-2">View All Students</h4>
+                </a>
+                <% if(!user.isStudent) { %>
+                    <a href="/upload" class="col-4 text-center">
+                        <div class="features-icon fa-stack fa-4x">
+                            <i class="fa fa-book text-primary"></i>
+                        </div>
+                        <h4 class="feature-heading p-2">Upload Pdf</h4>
+                    </a>
+                <% } %>
+            </div>
+        </div>
+    </section>
+
+</div>

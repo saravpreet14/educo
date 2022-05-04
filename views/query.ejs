@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Query</title>
+    
+        <% include ./partials/header.ejs %>
+        <link rel="stylesheet" href="/css/tests.css">
+
+    </head>
+    <body>
+
+        <% include ./partials/navbar.ejs %>
+        <div class="container">
+
+            <div>
+                <h1 id="heading" class="text-center my-3">
+                    Search Using Keywords
+                </h1>
+            </div>
+
+            <hr class="style14 mb-2">
+        
+            <div>
+                <form action="/query" method="post">
+                    <div class="input-group input-group-lg mt-4">
+                        <input type="text" class="form-control"  name="keywords" placeholder="Enter Keywords separated by ','">
+                    </div>
+                    <div id="emails" class="mt-3">
+                        <div class="form-group">  
+                            <h3> Select Other Users </h3>
+                            <select class="options" name="studentEmail[]">
+                                <option value="None">No User</option>
+                            </select>               
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" >Submit</button>
+                </form>
+                <button id="addBtn" class="btn btn-danger mt-1">Add more Students</button>
+            </div>
+            
+        </div>
+
+        <script src="/js/query.js"></script>
+
+    </body>
+</html>

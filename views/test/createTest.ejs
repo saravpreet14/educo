@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Test</title>
+    
+    <% include ../partials/header.ejs %>
+    <link rel="stylesheet" href="/css/tests.css">
+
+</head>
+<body>
+
+<%- include ../partials/navbar.ejs %>
+
+<div class="container">
+
+    <div>
+        <h1 id="heading" class="text-center my-3">
+            Create Test
+        </h1>
+    </div>
+
+    <hr class="style14 mb-2">
+
+    <form>
+
+        <p style="display: none;" id="user"><%= user.name %></p>
+
+        <div class="input-group input-group-lg">
+            <input id="testname" type="text" class="form-control" placeholder="Enter Test Name">
+        </div>
+        <div class="input-group input-group-lg mt-1">
+            <input id = "subject" type="text" class="form-control" placeholder="Enter Subject Name">
+        </div>
+        <div class="input-group input-group-lg mt-1">
+            <input id="startTime" type="datetime-local" class="form-control" placeholder="Enter Test Starting Time">
+        </div>
+        <div class="input-group input-group-lg mt-1">
+                <input id="endTime" type="datetime-local" class="form-control" placeholder="Enter Test Ending Time">
+        </div>
+
+        <div id="quesarea">
+
+        </div>
+
+        <div class="mt-2 text-center">
+            <button type="button" id="submit" class="btn btn-danger hideKardo">SUBMIT</button>
+            <button type="button" id="addques" class="btn btn-primary">ADD QUES</button>
+            <button type="button" id="done" class ="btn btn-success">DONE</button>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="/js/test/createTest.js"></script>
+</body>
+</html>

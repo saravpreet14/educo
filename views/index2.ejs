@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Educo</title>
+
+    <!-- Include Common Files -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel = "stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="css/index.css">
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+
+</head>
+<body>
+
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top color-dark">
+    <div id="navbar-container" class="container-fluid">
+        <!-- Navbar Brand Heading -->
+        <a id="navbar-brand" class="h1" href="/">
+            <i class="fa fa-graduation-cap"></i>
+            Educo
+        </a>
+        <!-- Menu Button for Small Screens -->
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu
+            <i class="fa fa-bars"></i>
+        </button>
+
+        <!-- Navbar Menu (same as Collapse Menu also) -->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+
+                <!-- Login/Signup or Hi, User! -->
+                <!-- Display Login/Signup if not logged in -->
+                <% if(!user) { %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Login/SignUp</a>
+                </li>
+                <!-- Display User Dropdown if Logged in -->
+                <% } else { %>
+                <li class="nav-item dropdown">
+                    <!-- Dropdown -->
+                    <a class="nav-link dropdown-toggle" href="#" id="welcomeDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Hi <%= user.username %>!
+                    </a>
+                    <!-- Dropdown Menu -->
+                    <div class="dropdown-menu" aria-labelledby="welcomeDropdown">
+                        <a class="dropdown-item" href="#">Your Events</a>
+                        <a class="dropdown-item" href="/events/new">Create an Event</a>
+                        <a class="dropdown-item" href="#">Events to Attend</a>
+                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                    </div>
+                </li>
+                <% } %>
+            </ul>
+        </div>
+        <!-- END Navbar Menu -->
+    </div>
+</nav>
+
+
+<div id="landing-section">
+    <div class="container">
+        <div class="col-12 text-center">
+            <h2 id="landing-heading" class="text-uppercase">Educo</h2>
+            <h3 id="landing-subheading">A communication platform for teachers and students .</h3>
+            <a href="#features" id="landing-btn" class="btn btn-primary btn-lg mt-5">Learn More</a>
+        </div>
+    </div>
+</div>
+
+<section id="features" class="py-3">
+    <div class="container">
+        <div class="row my-3 pt-5 pb-2">
+            <div class="col-12 text-center">
+                <h1 id="features-heading">Features</h1>
+            </div>
+        </div>
+        <div class="row mb-2 pb-2">
+            <div class="col-4 text-center">
+                <div class="features-icon fa-stack fa-4x">
+                    <i class="fa fa-comment text-primary "></i>
+                </div>
+                <h4 class="feature-heading p-2">Communicate</h4>
+                <p class="text-muted">Have teacher's guidance at your home.
+                    No need travel to school just to clear few doubts. Form groups, interact with your classmates
+                    and expand your knowledge.</p>
+            </div>
+            <div class="col-4 text-center">
+                <div class="features-icon fa-stack fa-4x">
+                    <i class="fa fa-file text-primary"></i>
+                </div>
+                <h4 class="feature-heading p-2">Assess</h4>
+                <p class="text-muted">Now teachers don't have to waste an hour from their classes to conduct small tests.
+                    Teachers can easily create questionnaire and assess their students.</p>
+            </div>
+            <div class="col-4 text-center">
+                <div class="features-icon fa-stack fa-4x">
+                    <i class="fa fa-bell text-primary"></i>
+                </div>
+                <h4 class="feature-heading p-2">Text Alerts</h4>
+                <p class="text-muted">Life is so fast that you miss out some important events? No problem. Now get
+                    your alerts and notifications in advance and be ahead of time.</p>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <a href="/" id="get-started-btn" class="btn btn-primary btn-lg">Get Started</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</body>
+</html>

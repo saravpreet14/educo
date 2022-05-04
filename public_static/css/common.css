@@ -1,0 +1,31 @@
+/* Import Required Fonts */
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
+
+/* Navbar Brand Heading */
+#navbar-brand {
+    color: white;
+    font-weight: 400;
+    text-decoration: none;
+    font-family: 'Kaushan Script', Helvetica, Arial, cursive;
+    -webkit-text-stroke: 1px black;
+}
+
+.color-dark {
+    background-color: #070203;
+}
+
+/* Give Padding to anything after Navbar */
+nav + * {
+    padding-top: 80px;
+}
+
+/* Navbar Menu Items */
+.navbar-dark .navbar-nav .nav-link {
+    font-size: 20px;
+    color: white;
+}
+
+/* Give Padding to Navbar Container */
+#navbar-container {
+    padding: 0 50px;
+}

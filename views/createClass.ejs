@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Class</title>
+    
+    <% include ./partials/header.ejs %>
+    <link rel="stylesheet" href="/css/tests.css">
+
+</head>
+<body>
+
+    <% include ./partials/navbar.ejs %>
+
+    <div class="container">
+
+        <div>
+            <h1 id="heading" class="text-center my-3">
+                Create Online Class
+            </h1>
+        </div>
+
+        <hr class="style14 mb-2">
+
+        <form action="/screen" method="post">
+            <div class="input-group input-group-lg">
+                <input type="text" class="form-control" name="topicName" placeholder="Topic Name" required>
+            </div>
+            <div class="input-group input-group-lg mt-1">
+                <input type="text" class="form-control" name="subjectName" placeholder="Subject Name" required>
+            </div>
+            <div class="input-group input-group-lg mt-1">
+                <input type="datetime-local" class="form-control" name="startingTime" placeholder="Starting Time" required>
+            </div>
+            <div class="input-group input-group-lg mt-1">
+                <input type="number" class="form-control" name="expectedDuration" placeholder="Expected Duration (in hrs)" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg mt-2">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>

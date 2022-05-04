@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Groups Section</title>
+    <% include ./partials/header.ejs %>
+    <link rel="stylesheet" href="/css/groups.css">
+</head>
+<body>
+
+<%- include ./partials/navbar.ejs %>
+
+<div class="container">
+        
+    <div>
+        <h1 id="heading" class="text-center my-3">
+            Groups Section
+            <% if(!user.isStudent) { %> 
+                <span class="pull-right">
+                    <a href="/dashboard">
+                        <button class="btn btn-lg btn-primary">Create New Group</button>
+                    </a>
+                </span>
+            <% } %>
+        </h1>
+    </div>
+
+    <hr class="style14 mb-2">
+
+    <% groups.forEach(group => { %>
+        <div class="card event-card mb-3">
+            <div class="card-body">
+                <div class="media">
+                    <img class="d-flex mr-5 event-img" src="http://placehold.it/100x100" alt="">
+                    <div class="media-body">
+                        <h5 class="event-name"><%= group.name %></h5>
+                        <div class="event-description">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="datetime">
+                                        <i class="fa fa-angle-right"></i> <%= group.groupType %>
+                                    </div>
+                                    <div class="venue">
+                                        <i class="fa fa-user"></i> Created By: <%= group.createdBy %>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <a href="/group/<%= group.name.replace(/ /g, "-") %>/1" class="btn-lg btn-danger">General Discussion</a>
+                                    <a href="/group/<%= group.name.replace(/ /g, "-") %>/2" class="btn-lg btn-danger">Imp Updates</a>
+                                    <a href="/group/<%= group.name.replace(/ /g, "-") %>/3" class="btn-lg btn-danger">Resources</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    <% }) %>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/home.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

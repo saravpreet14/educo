@@ -1,0 +1,56 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Queries</title>
+
+    <% include ./partials/header.ejs %>
+
+    <link rel="stylesheet" href="/css/tests.css">
+
+</head>
+<body>
+
+<% include ./partials/navbar.ejs %>
+
+<div class="container">
+    <div>
+        <h1 id="heading" class="text-center my-3">
+            Search Results for <%= title %>
+            <% if(!user.isStudent) { %> 
+                <span class="pull-right">
+                    <a href="/query">
+                        <button class="btn btn-lg btn-primary">New Query</button>
+                    </a>
+                </span>
+            <% } %>
+        </h1>
+    </div>
+    <hr class="style14 mb-2">
+
+    <% queries.forEach(query => { %>
+        <a href="/query/<%= query._id %>">
+            <div class="card event-card mb-3">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="event-name"><%= query.keywords %></h5>
+                            <div class="event-description">
+                                <div class="datetime">
+                                    <i class="fa fa-user"></i> Searched By: <%= query.email[0] %>
+                                    <span class="pull-right">
+                                        <i class="fa fa-clock-o"></i> <b>Time: </b><%= query.dateUploaded.toLocaleString() %> 
+                                    </span> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>  
+    <% }) %>
+
+</div>
+
+<script src="/js/query.js"></script>
+
+</body>
+</html>
